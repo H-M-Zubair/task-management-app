@@ -12,5 +12,5 @@ export class SignupUserDto {
   password: string;
 
   @Field()
-  tenantId: string; // The existing organization ID (sent in the invite)
+  tenantId: string;
 }

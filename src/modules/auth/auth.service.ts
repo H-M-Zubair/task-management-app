@@ -21,7 +21,6 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  // 🚀 Signup for the first user in a new organization
   async signupOrganization(
     signupDto: SignupOrganizationDto,
   ): Promise<{ token: string; tenant: Tenant }> {
@@ -30,21 +29,20 @@ export class AuthService {
     if (!organizationName) {
       throw new Error('organizationName is required');
     }
-    //Such Email Already exists or not
+
     const existingUser = await this.userRepository.findOne({
       where: { email },
     });
     if (existingUser) {
       throw new UnauthorizedException('Email already exists');
     }
-    // Step 1: Create a new Tenant (Organization)
+
     const tenant = this.tenantRepository.create({
       name: organizationName,
       schemaName: `${organizationName.toLowerCase().replace(/\s+/g, '_')}_${Date.now()}`, // Example schema naming
     });
     await this.tenantRepository.save(tenant);
 
-    // Step 2: Hash Password and Create First User (Admin)
     const user = this.userRepository.create({
       email,
       passwordHash: password,
@@ -54,8 +52,6 @@ export class AuthService {
 
     await this.userRepository.save(user);
 
-    // Step 3: Generate JWT Token
-
     const token = this.jwtService.sign({
       id: user.id,
       tenantId: tenant.id,
@@ -64,40 +60,6 @@ export class AuthService {
 
     return { token, tenant };
   }
-
-  // // 🚀 Signup for invited users
-  // async signupUser(signupDto: SignupUserDto): Promise<{ token: string }> {
-  //   const { email, password, tenantId } = signupDto;
-
-  //   // Step 1: Verify Tenant Exists
-  //   const tenant = await this.tenantRepository.findOne({
-  //     where: { id: tenantId },
-  //   });
-  //   if (!tenant) {
-  //     throw new UnauthorizedException('Invalid tenant ID');
-  //   }
-
-  //   // Step 2: Verify User Exists and Was Invited
-  //   const existingUser = await this.userRepository.findOne({
-  //     where: { email, tenant },
-  //   });
-  //   if (!existingUser) {
-  //     throw new UnauthorizedException('User must be invited first');
-  //   }
-
-  //   // Step 3: Hash Password and Update User Record
-  //   existingUser.passwordHash = password;
-  //   await this.userRepository.save(existingUser);
-
-  //   // Step 4: Generate JWT Token
-  //   return {
-  //     token: this.jwtService.sign({
-  //       id: existingUser.id,
-  //       tenantId: tenant.id,
-  //       role: existingUser.role,
-  //     }),
-  //   };
-  // }
 
   // 🚀 User Login
   async login(loginDto: LoginDto): Promise<{ token: string; user: User }> {
@@ -124,7 +86,6 @@ export class AuthService {
       throw new UnauthorizedException('Invalid email or password');
     }
 
-    // Generate JWT token
     const token = this.jwtService.sign({
       id: user.id,
       tenantId: user.tenant.id,

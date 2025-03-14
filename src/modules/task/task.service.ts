@@ -71,7 +71,7 @@ export class TaskService {
       description,
       assignedTo,
       createdBy: currentUser,
-      tenant, // Ensures task belongs to the correct tenant
+      tenant,
     });
 
     // Save and return the task
@@ -127,7 +127,6 @@ export class TaskService {
     tenantId: string,
     user: User,
   ): Promise<void> {
-    // Ensure the tenant exists
     const tenant = await this.tenantRepository.findOne({
       where: { id: tenantId },
     });
@@ -135,7 +134,6 @@ export class TaskService {
       throw new ForbiddenException('Invalid tenant');
     }
 
-    // Find the task in the given tenant
     const task = await this.taskRepository.findOne({
       where: { id: taskId, tenant: { id: tenantId } },
     });
@@ -143,12 +141,10 @@ export class TaskService {
       throw new NotFoundException('Task not found');
     }
 
-    // Check if the user has permission (either Admin or Manager)
     if (user.role !== 'Admin' && user.role !== 'Manager') {
       throw new ForbiddenException('Only Admins or Managers can delete tasks');
     }
 
-    // Delete the task
     await this.taskRepository.remove(task);
   }
 }

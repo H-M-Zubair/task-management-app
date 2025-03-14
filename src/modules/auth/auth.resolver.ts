@@ -21,15 +21,7 @@ export class AuthResolver {
     return this.authService.signupOrganization(signupDto);
   }
 
-  // @Mutation(() => String, { description: 'Signup for invited users' })
-  // async signupUser(
-  //   @Args('signupInput') signupDto: SignupUserDto,
-  // ): Promise<string> {
-  //   const { token } = await this.authService.signupUser(signupDto);
-  //   return token;
-  // }
-
-  @Mutation(() => LoginResponse, { description: 'Login existing user' }) // ✅ Updated return type
+  @Mutation(() => LoginResponse, { description: 'Login existing user' })
   async login(@Args('loginInput') loginDto: LoginDto): Promise<LoginResponse> {
     return this.authService.login(loginDto);
   }

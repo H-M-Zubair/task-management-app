@@ -21,13 +21,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate(payload: any) {
     const user = await this.userRepository.findOne({
       where: { id: payload.id },
-      relations: ['tenant'], // Include tenant details
+      relations: ['tenant'],
     });
 
     if (!user) {
       throw new Error('User not found');
     }
 
-    return user; // Now returns full User entity instead of a simple object
+    return user;
   }
 }

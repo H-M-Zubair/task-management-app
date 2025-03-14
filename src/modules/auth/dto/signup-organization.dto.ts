@@ -13,5 +13,5 @@ export class SignupOrganizationDto {
 
   @Field()
   @IsNotEmpty()
-  organizationName: string; // The new organization name
+  organizationName: string;
 }

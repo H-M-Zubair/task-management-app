@@ -7,15 +7,15 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { User } from 'src/entity/user/user.entity';
 import { Tenant } from 'src/entity/tenant/tenant.entity';
 import { JwtStrategy } from './strategies/jwt.strategy';
-import { UserModule } from '../user/user.module'; // ✅ Import UserModule
-import { TenantModule } from '../tenant/tenant.module'; // ✅ Import TenantModule
+import { UserModule } from '../user/user.module';
+import { TenantModule } from '../tenant/tenant.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User, Tenant]), // ✅ Register entities
+    TypeOrmModule.forFeature([User, Tenant]),
     ConfigModule,
-    UserModule, // ✅ Import UserModule to fix UserRepository issue
-    TenantModule, // ✅ Import TenantModule to fix TenantRepository issue
+    UserModule,
+    TenantModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -26,6 +26,6 @@ import { TenantModule } from '../tenant/tenant.module'; // ✅ Import TenantModu
     }),
   ],
   providers: [AuthService, AuthResolver, JwtStrategy],
-  exports: [AuthService, JwtModule], // ✅ Export AuthService & JwtModule if needed in other modules
+  exports: [AuthService, JwtModule],
 })
 export class AuthModule {}

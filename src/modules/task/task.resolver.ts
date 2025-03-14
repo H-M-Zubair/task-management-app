@@ -22,7 +22,7 @@ export class TaskResolver {
   }
 
   @Query(() => [Task], { description: 'Fetch tasks for a specific tenant' })
-  @UseGuards(GqlAuthGuard) // Apply GqlAuthGuard to ensure authentication
+  @UseGuards(GqlAuthGuard)
   async getTasksByTenant(@Args('tenantId') tenantId: string): Promise<Task[]> {
     return this.taskService.getTasksByTenant(tenantId);
   }
@@ -37,25 +37,24 @@ export class TaskResolver {
   }
 
   @Mutation(() => Task)
-  @UseGuards(GqlAuthGuard) // Protects this route with JWT authentication
+  @UseGuards(GqlAuthGuard)
   async updateTaskStatus(
     @Args('updateTaskStatusDto') updateTaskStatusDto: UpdateTaskStatusDto,
-    @CurrentUser() user: User, // Extract the authenticated user
+    @CurrentUser() user: User,
   ): Promise<Task> {
     return this.taskService.updateTaskStatus(user, updateTaskStatusDto);
   }
 
   @Mutation(() => Boolean, { description: 'Delete a task' })
-  @UseGuards(GqlAuthGuard) // Ensure the user is authenticated
+  @UseGuards(GqlAuthGuard)
   async deleteTask(
     @Args('taskId') taskId: string, // Task ID to delete
     @Args('tenantId') tenantId: string, // Tenant ID to ensure proper isolation
     @CurrentUser() user: User, // Currently logged-in user
   ): Promise<boolean> {
     try {
-      // Call the service to delete the task
       await this.taskService.deleteTask(taskId, tenantId, user);
-      return true; // If deletion is successful, return true
+      return true;
     } catch (error) {
       throw new ForbiddenException(error.message);
     }
