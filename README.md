@@ -44,56 +44,65 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+<p align="center">
+  <a href="https://yourproject.com/" target="blank"><img src="https://yourlogo.com/logo.svg" width="120" alt="Project Logo" /></a>
+</p>
 
-## Run tests
+[![Version](https://img.shields.io/npm/v/yourpackage.svg)](https://www.npmjs.com/package/yourpackage)
+[![License](https://img.shields.io/npm/l/yourpackage.svg)](LICENSE)
+[![Downloads](https://img.shields.io/npm/dm/yourpackage.svg)](https://www.npmjs.com/package/yourpackage)
+[![Build Status](https://img.shields.io/circleci/build/github/yourorg/yourrepo/master)](https://circleci.com/gh/yourorg/yourrepo)
+[![Coverage](https://coveralls.io/repos/github/yourorg/yourrepo/badge.svg?branch=master)](https://coveralls.io/github/yourorg/yourrepo?branch=master)
+[![Discord](https://img.shields.io/badge/discord-online-brightgreen.svg)](https://discord.gg/yourdiscord)
+[![Backers](https://opencollective.com/yourproject/backers/badge.svg)](https://opencollective.com/yourproject#backer)
+[![Sponsors](https://opencollective.com/yourproject/sponsors/badge.svg)](https://opencollective.com/yourproject#sponsor)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-ff3f59.svg)](https://paypal.me/yourpaypal)
+[![Follow on Twitter](https://img.shields.io/twitter/follow/yourproject.svg?style=social&label=Follow)](https://twitter.com/yourproject)
 
-```bash
-# unit tests
-$ npm run test
+## Description
 
-# e2e tests
-$ npm run test:e2e
+[YourProject](https://github.com/yourorg/yourrepo) is a modern, scalable, and efficient framework for building robust applications.
 
-# test coverage
-$ npm run test:cov
-```
+## Features
 
-## Deployment
+- 🚀 **High Performance** - Optimized for speed and efficiency.
+- 🔒 **Secure** - Built-in security best practices.
+- 🛠️ **Extensible** - Modular architecture for easy integration.
+- 📦 **Lightweight** - Minimal dependencies and fast execution.
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+</p>
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+<h1 align="center">Task Management System</h1>
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+<p align="center">
+  A role-based task management system built with <b>NestJS</b>, <b>TypeORM</b>, and <b>PostgreSQL</b>, supporting multi-tenancy.
+</p>
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+## 🚀 Features
+- **JWT Authentication & RBAC** – Secure login and access control for Admins, Managers, and Users.
+- **Multi-Tenant Architecture** – Data isolation for different organizations.
+- **Task Management** – Create, assign, update, and delete tasks.
+- **User Management** – Invite users, assign roles, and manage organization members.
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## 🛠 Tech Stack
+- **Backend**: NestJS, TypeORM, GraphQL
+- **Database**: PostgreSQL (via Docker)
+- **Authentication**: JWT, bcrypt
+- **Deployment**: Docker & Docker Compose
 
-## Resources
+## 📦 Installation
 
-Check out a few resources that may come in handy when working with NestJS:
+### Using Docker
+```sh
+git clone https://github.com/your-username/task-management-system.git
+cd task-management-system
+docker-compose up --build
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+---
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Made with ❤️ by [Zubair Rafiq]
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
